@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+.metadata
+Stark_Kit_Base/Debug/
+*.log
 # Object files
 *.o
 *.ko

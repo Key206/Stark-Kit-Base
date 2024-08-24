@@ -1,9 +1,9 @@
-# Stark Kit Base
+# STARK KIT BASE
 
-## Purpose
+## PURPOSE
 Initial comment.
 
-## Features
+## FEATURES
 
 The Stark Kit Base project includes the following features:
 
@@ -11,10 +11,17 @@ The Stark Kit Base project includes the following features:
 
 2. **Alarm**: The system can set time to alarm. It will notify by sound of buzzer and blink led.  
 
-## Hardware design
+## DETAIL FEATURES
+1. **Time, Temperature, Humidity Display**
+   
+| ID  | Functionality                  | Note                                                                 |
+| --- | ------------------------------ | -------------------------------------------------------------------- |
+| 01  | Display Current Time On OLED Screen | Display Year, Month, Day of Week, Day of Month, Hour, Minute |
+| 02  | Display Temparature, Humidity            | Tempereture in Celsius, and Humidity on OLED Screen                                               |
 
-![Stark Kit Base Hardware Architecture](./Document/001_Hardware_AR.png)
 
+## HARDWARE ARCHITECTURE
+Stark Kit was assembled by these modules:
  Module         | Functionality                                    
  ---------------|----------------------------------- 
  STM32F103RCT6  | Main micro-controller              
@@ -26,16 +33,19 @@ The Stark Kit Base project includes the following features:
  BUZZER         |      
  RGB LED        | 
 
-## Detailed Features
-1. **Time, Temperature, Humidity Display**
-   
-| ID  | Functionality                  | Note                                                                 |
-| --- | ------------------------------ | -------------------------------------------------------------------- |
-| 01  | Display Current Time On OLED Screen | Display Year, Month, Day of Week, Day of Month, Hour, Minute |
-| 02  | Display Temparature, Humidity            | Tempereture in Celsius, and Humidity on OLED Screen                                               |
+![Stark Kit Base Hardware Architecture](./Document/001_Hardware_AR.png)
 
-## Software Architecture
+## SOFTWARE ARCHITECTURE
 ![Stark Kit Base Software Architecture](./Document/001_Software_AR.png)
 
-## Developer Team
+## TOOLS
+ | Name           | Version | Functionality                                      
+ -----------------|---------|---------------------------------------
+ | STM32CubeIDE   | 1.13.2  | Code editor, build and debugging tool              
+ | STM32CubeMX    | 6.10.0  | Code generator
+ | Logic Analyzer | 2.4.14  | Debugging and testing pulse signal
+ | Draw.io        | 22.1.16 | Draw block diagram and flowchart
+ | PlantUML       | 2.18.1  | Draw sequence diagram
+ 
+## DEVELOPER TEAM
 1. **Nguyen Minh Khoa**
