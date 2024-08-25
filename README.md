@@ -48,4 +48,4 @@ Stark Kit was assembled by these modules:
  | PlantUML       | 2.18.1  | Draw sequence diagram
  
 ## DEVELOPER TEAM
-1. **Nguyen Minh Khoa**
+1. **Khoa Nguyen Minh**

@@ -1,25 +1,23 @@
 /***********************************************************************************************************************
 *
 * Component:     Dio
-* FileName:      Dio_IoHwAbs.h
+* FileName:      Dio_IoHw_Bsp.c
 * Author:        Khoa Nguyen Minh
 *
 ***********************************************************************************************************************/
-#ifndef DIO_IOHWABS_H_
-#define DIO_IOHWABS_H_
+
 /***********************************************************************************************************************
  * Includes
  **********************************************************************************************************************/
+#include "stdint.h"
+#include "stdbool.h"
+#include "stm32f1xx_ll_gpio.h"
+#include "stm32f103xe.h"
+#include "Dio_IoHw_Bsp.h"
 
 /***********************************************************************************************************************
  * Local Defines
  **********************************************************************************************************************/
-
-typedef enum
-{
-    DIO_LOW = 0, /** Defines digital state ground */
-    DIO_HIGH     /** Defines digital state power */
-}DioPinState_t;
 
 /***********************************************************************************************************************
  * Local Macros
@@ -55,7 +53,10 @@ typedef enum
  * @param[in]   void    Input
  * @param[out]  void    Output
  */
-void Dio_IoHwAbs_Init(void);
+void Dio_IoHwAbs_Init(void)
+{
+    /* Dummy function */
+}
 
 /**
  * @brief       Dio_IoHwAbs write channel function
@@ -65,7 +66,18 @@ void Dio_IoHwAbs_Init(void);
  * @param[in]   LevelType   Input
  * @param[out]  void        Output
  */
-void Dio_IoHwAbs_WriteChannel(GPIO_TypeDef *Port, uint32_t PinMask, bool LevelType);
+void Dio_IoHwAbs_WriteChannel(GPIO_TypeDef *Port, uint32_t PinMask, bool LevelType)
+{
+    if(DIO_HIGH == LevelType)
+    {
+        LL_GPIO_SetOutputPin(Port, PinMask);
+    }
+    else
+    {
+        LL_GPIO_ResetOutputPin(Port, PinMask);
+    }
+
+}
 
 /**
  * @brief       Dio_IoHwAbs read channel function
@@ -74,7 +86,12 @@ void Dio_IoHwAbs_WriteChannel(GPIO_TypeDef *Port, uint32_t PinMask, bool LevelTy
  * @param[in]   PinMask     Input
  * @param[out]  RetLevel    Output uint32_t
  */
-uint32_t Dio_IoHwAbs_ReadChannel(GPIO_TypeDef *Port, uint32_t PinMask);
+uint32_t Dio_IoHwAbs_ReadChannel(GPIO_TypeDef *Port, uint32_t PinMask)
+{
+    uint32_t RetLevel = 0U;
+    RetLevel = LL_GPIO_IsInputPinSet(Port, PinMask);
+    return RetLevel;
+}
 
 /**
  * @brief       Dio_IoHwAbs toggle channel function
@@ -83,9 +100,10 @@ uint32_t Dio_IoHwAbs_ReadChannel(GPIO_TypeDef *Port, uint32_t PinMask);
  * @param[in]   PinMask     Input
  * @param[out]  void        Output
  */
-void Dio_IoHwAbs_ToggleChannel(GPIO_TypeDef *Port, uint32_t PinMask);
-
-#endif
+void Dio_IoHwAbs_ToggleChannel(GPIO_TypeDef *Port, uint32_t PinMask)
+{
+    LL_GPIO_TogglePin(Port, PinMask);
+}
 /***********************************************************************************************************************
  * End Of File
  **********************************************************************************************************************/
